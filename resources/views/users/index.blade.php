@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h3 class="text-center">Usuarios</h3>
 
-                            <a class="btn btn-success" href="{{ route ('users.create') }}">Nuevo</a>
+                            <a class="btn btn-warning" href="{{ route ('users.create') }}">Nuevo</a>
                             
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
