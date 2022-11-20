@@ -14,6 +14,13 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-usuario|crear-usuario|editar-usuario|borrar-usuario', ['only' => ['index']]);
+        $this->middleware('permission:crear-usuario', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-usuario', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-usuario', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
