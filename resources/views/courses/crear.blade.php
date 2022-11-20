@@ -22,21 +22,29 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('course.store') }}" method="POST">
+                    <form action="{{ route('courses.store') }}" method="POST">
                         @csrf
                         <div class="row">
+                            {{-- Titulo --}}
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="titulo">Título</label>
-                                    <input type="text" name="titulo" class="form-control">
+                                    <input type="text" name="titulo" class="form-control" placeholder="Ingrese el título, por ejemplo: 'Curso de Laravel'">
                                 </div>
                             </div>
+                            {{-- Contenido --}}
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    
                                 <div class="form-floating">
-                                <textarea class="form-control" name="contenido" style="height: 100px"></textarea>
-                                <label for="contenido">Contenido</label>
+                                    <label for="contenido">Contenido</label>
+                                    <textarea class="form-control" name="contenido" style="height: 100px" placeholder="Ingrese una descripción"></textarea>
                                 </div>
+                            {{-- Precio --}}
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="precio">Precio</label>
+                                    <input type="text" name="precio" class="form-control" placeholder="Ingrese el precio del curso, por ejemplo: 100.00">
+                                </div>
+                            </div>
                             
                             <button type="submit" class="btn btn-primary">Guardar</button>                            
                         </div>

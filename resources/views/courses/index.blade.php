@@ -20,7 +20,8 @@
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Titulo</th>
-                                    <th style="color:#fff;">Contenido</th>                                    
+                                    <th style="color:#fff;">Contenido</th>
+                                    <th style="color:#fff;">Precio $</th>                                   
                                     <th style="color:#fff;">Acciones</th>                                                                   
                                 </thead>
                             <tbody>
@@ -29,6 +30,7 @@
                                 <td style="display: none;">{{ $course->id }}</td>                                
                                 <td>{{ $course->titulo }}</td>
                                 <td>{{ $course->contenido }}</td>
+                                <td>{{ $course->precio }}</td>
                                 <td>
                                     <form action="{{ route('courses.destroy',$course->id) }}" method="POST">                                        
                                         @can('editar-curso')

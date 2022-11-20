@@ -43,7 +43,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Course $course)
+    public function store(Request $request)
     {
         request()->validate([
             'titulo' => 'required',
