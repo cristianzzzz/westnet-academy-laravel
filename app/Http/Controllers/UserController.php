@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         $usuarios = User::paginate (5);
 
-        return view('usuarios.index', compact ('usuarios'));
+        return view('users.index', compact ('usuarios'));
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck ('name', 'name')->all();
 
-        return view('usuarios.crear', compact('roles'));
+        return view('users.crear', compact('roles'));
     }
 
     /**
@@ -57,7 +57,7 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole ($request->input('roles'));
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
         
     }
 
@@ -116,7 +116,7 @@ class UserController extends Controller
         
         $user->assignRole ($request->input('roles'));
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -129,6 +129,6 @@ class UserController extends Controller
     {
         User::find($id) ->delete();
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('users.index');
     }
 }

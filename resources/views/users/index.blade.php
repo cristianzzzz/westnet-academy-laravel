@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h3 class="text-center">Dashboard Content</h3>
 
-                            <a class="btn btn-warning" href="{{ route ('usuarios.create') }}">Nuevo</a>
+                            <a class="btn btn-warning" href="{{ route ('users.create') }}">Nuevo</a>
                             
 
 
