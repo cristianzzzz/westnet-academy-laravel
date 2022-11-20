@@ -10,7 +10,7 @@ class CourseController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission: ver-course | crear-course | editar-course | borrar-course')->only('index');  
+        $this->middleware('permission: ver-course|crear-course|editar-course|borrar-course')->only('index');  
         $this->middleware('permission: crear-course' , ['only' => ['create', 'store']]);   
         $this->middleware('permission: editar-course' , ['only' => ['edit', 'update']]);   
         $this->middleware('permission: borrar-course' , ['only' => ['destroy']]);   
@@ -34,7 +34,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.crear');
+        return view('courses.crear');
     }
 
     /**
@@ -51,7 +51,7 @@ class CourseController extends Controller
             ]);
         Course::create($request->all());
 
-        return redirect()->route('course.index');
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        return view('course.editar', compact('course'));
+        return view('courses.editar', compact('course'));
     }
 
     /**
@@ -89,9 +89,9 @@ class CourseController extends Controller
             'titulo' => 'required',
             'contenido' => 'required'
             ]);
-        $courses->update($request->all());
+        $course->update($request->all());
 
-        return redirect()->route('course.index');
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class CourseController extends Controller
     {
         $course->delete();
         
-        return redirect()->route('course.index');
+        return redirect()->route('courses.index');
     }
 }
