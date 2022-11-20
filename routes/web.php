@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// Adding Controllers
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +28,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('roles', RolController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('courses', CourseController::class);
+}
