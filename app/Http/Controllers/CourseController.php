@@ -22,9 +22,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Blog::paginate (5);
+        $courses = Course::paginate (5);
 
-        return view('courses.index', compact('courses'))
+        return view('courses.index', compact('courses'));
     }
 
     /**

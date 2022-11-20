@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Contracts\Permission;
 
+
 class RolController extends Controller
 {
 
@@ -78,7 +79,7 @@ class RolController extends Controller
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
-        return view('roles.editar', compact('role', 'permission', 'rolPermissions'))
+        return view('roles.editar', compact('role', 'permission', 'rolPermissions'));
     }
 
     /**
