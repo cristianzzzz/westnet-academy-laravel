@@ -49,6 +49,7 @@ class CourseController extends Controller
             'titulo' => 'required',
             'contenido' => 'required'
             ]);
+
         Course::create($request->all());
 
         return redirect()->route('courses.index');
@@ -71,7 +72,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Course $course)
     {
         return view('courses.editar', compact('course'));
     }
@@ -83,7 +84,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Course $course)
     {
         request()->validate([
             'titulo' => 'required',
