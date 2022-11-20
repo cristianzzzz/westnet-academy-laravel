@@ -10,10 +10,10 @@ class CourseController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission: ver-course|crear-course|editar-course|borrar-course')->only('index');  
-        $this->middleware('permission: crear-course' , ['only' => ['create', 'store']]);   
-        $this->middleware('permission: editar-course' , ['only' => ['edit', 'update']]);   
-        $this->middleware('permission: borrar-course' , ['only' => ['destroy']]);   
+        $this->middleware('permission: ver-curso|crear-curso|editar-curso|borrar-curso')->only('index');  
+        $this->middleware('permission: crear-curso' , ['only' => ['create', 'store']]);   
+        $this->middleware('permission: editar-curso' , ['only' => ['edit', 'update']]);   
+        $this->middleware('permission: borrar-curso' , ['only' => ['destroy']]);   
     }
     /**
      * Display a listing of the resource.
@@ -43,11 +43,12 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Course $course)
     {
         request()->validate([
             'titulo' => 'required',
-            'contenido' => 'required'
+            'contenido' => 'required',
+            'precio' => 'required'
             ]);
 
         Course::create($request->all());
@@ -88,7 +89,8 @@ class CourseController extends Controller
     {
         request()->validate([
             'titulo' => 'required',
-            'contenido' => 'required'
+            'contenido' => 'required',
+            'precio' => 'required'
             ]);
         $course->update($request->all());
 

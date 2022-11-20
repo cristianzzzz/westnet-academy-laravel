@@ -25,7 +25,7 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="login-brand">
                         <img src="{{ asset('img/logo.png') }}" alt="logo" width="100"
-                             class="shadow-light">
+                            class="shadow-light">
                     </div>
                     @yield('content')
                     <div class="simple-footer">
