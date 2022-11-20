@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission: ver-course | crear-course | editar-course | borrar-course')->only('index');  
+        $this->middleware('permission: crear-course' , ['only' => ['create', 'store']]);   
+        $this->middleware('permission: editar-course' , ['only' => ['edit', 'update']]);   
+        $this->middleware('permission: borrar-course' , ['only' => ['destroy']]);   
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Blog::paginate (5);
+
+        return view('courses.index', compact('courses'))
     }
 
     /**
@@ -23,7 +34,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.crear');
     }
 
     /**
@@ -34,7 +45,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'titulo' => 'required',
+            'contenido' => 'required'
+            ]);
+        Course::create($request->all());
+
+        return redirect()->route('course.index');
     }
 
     /**
@@ -56,7 +73,7 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('course.editar', compact('course'));
     }
 
     /**
@@ -68,7 +85,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'titulo' => 'required',
+            'contenido' => 'required'
+            ]);
+        $courses->update($request->all());
+
+        return redirect()->route('course.index');
     }
 
     /**
@@ -77,8 +100,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        
+        return redirect()->route('course.index');
     }
 }
