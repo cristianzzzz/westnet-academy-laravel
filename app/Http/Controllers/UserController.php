@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//agregamos lo siguiente
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -18,11 +19,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $usuarios = User::paginate (5);
+    public function index(Request $request)
+    {      
+        //Sin paginación
+        /* $usuarios = User::all();
+        return view('usuarios.index',compact('usuarios')); */
 
-        return view('users.index', compact ('usuarios'));
+        //Con paginación
+        $usuarios = User::paginate(5);
+        return view('users.index',compact('usuarios'));
+
+        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
 
     /**
@@ -32,9 +39,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck ('name', 'name')->all();
-
-        return view('users.crear', compact('roles'));
+        //aqui trabajamos con name de las tablas de users
+        $roles = Role::pluck('name','name')->all();
+        return view('users.crear',compact('roles'));
     }
 
     /**
@@ -47,18 +54,18 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required | email unique: users, email', 
-            'password' => 'required | same: confirm-password',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-
+    
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+    
         $user = User::create($input);
-        $user->assignRole ($request->input('roles'));
-
+        $user->assignRole($request->input('roles'));
+    
         return redirect()->route('users.index');
-        
     }
 
     /**
@@ -81,11 +88,12 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck ('name', 'name')->all();
-        $userRole = $user->roles->pluck ('name', 'name')->all();
-
-        return view('users.editar', compact ('user', 'roles', 'userRole'));
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+    
+        return view('users.editar',compact('user','roles','userRole'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -98,24 +106,24 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required | email | unique: users, email,'.$id,
-            'password' => 'same: confirm-password',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
             'roles' => 'required'
-            ]);
+        ]);
+    
         $input = $request->all();
-        
-        if (!empty($input['password'])) {
-            $input['password'] = Hash::make ($input ['password']);
-        } else {
-            $input = Arr::except($input, array('password'));
-            }
-
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));    
+        }
+    
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
-        
-        $user->assignRole ($request->input('roles'));
-
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+    
+        $user->assignRole($request->input('roles'));
+    
         return redirect()->route('users.index');
     }
 
@@ -127,8 +135,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id) ->delete();
-
+        User::find($id)->delete();
         return redirect()->route('users.index');
     }
 }
