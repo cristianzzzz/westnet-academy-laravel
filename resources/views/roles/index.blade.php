@@ -27,7 +27,7 @@
                                     <td>{{ $role->name }}</td>
                                     <td>                                
                                         @can('editar-rol')
-                                            <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Editar</a>
+                                            <a class="btn btn-info" href="{{ route('roles.edit',$role->id) }}">Editar</a>
                                         @endcan
                                         
                                         @can('borrar-rol')

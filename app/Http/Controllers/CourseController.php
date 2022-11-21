@@ -109,4 +109,9 @@ class CourseController extends Controller
         
         return redirect()->route('courses.index');
     }
+
+    public function cancel(Course $course)
+    {
+        return redirect()->route('courses.index');
+    }
 }

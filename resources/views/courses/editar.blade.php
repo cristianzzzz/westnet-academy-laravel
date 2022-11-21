@@ -50,10 +50,11 @@
                                 </div>
                             </div>
                             <br>
+                            {{-- Boton de Guardar y Cancelar --}}
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" class="btn btn-info">Guardar</button>
-                                <button href="{{ route('courses.index') }}" class="btn btn-danger">Cancelar</button>      
-                            </div>                  
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="cancel" onclick="window.location='{{ route('courses.index') }}';return false;" class="btn btn-danger">Cancelar</button>  
+                            </div>              
                         </div>
                     </form>
 

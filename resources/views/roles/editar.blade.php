@@ -42,8 +42,11 @@
                                 @endforeach
                             </div>
                         </div>
-                        
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" onclick="window.location='{{ route('roles.index') }}';return false;" class="btn btn-danger">Cancelar</button>
+                        </div>
                         
                     </div>
                     {!! Form::close() !!}

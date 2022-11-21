@@ -32,6 +32,11 @@ class SeederTablaPermisos extends Seeder
             'crear-curso',
             'editar-curso',
             'borrar-curso',
+            //Operacions sobre tabla payments
+            'ver-pago',
+            'crear-pago',
+            'editar-pago',
+            'borrar-pago',
             ];
             foreach ($permisos as $permiso){
                 Permission::create(['name' => $permiso]);

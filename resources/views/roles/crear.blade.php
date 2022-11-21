@@ -45,6 +45,7 @@
                             </div>        
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" onclick="window.location='{{ route('roles.index') }}';return false;" class="btn btn-danger">Cancelar</button>
                         {!! Form::close() !!}
                         </div>
                     </div>

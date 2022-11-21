@@ -45,8 +45,13 @@
                                     <input type="text" name="precio" class="form-control" placeholder="Ingrese el precio del curso, por ejemplo: 100.00">
                                 </div>
                             </div>
+                            {{-- Boton de Guardar y Cancelar --}}
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="cancel" onclick="window.location='{{ route('courses.index') }}';return false;" class="btn btn-danger">Cancelar</button>  
+                            </div> 
                             
-                            <button type="submit" class="btn btn-primary">Guardar</button>                            
+                            <br>   
                         </div>
                     </form>
                     

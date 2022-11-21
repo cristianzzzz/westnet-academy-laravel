@@ -55,9 +55,12 @@
                                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
+                        </div>
+                        {{-- Boton de Guardar y Cancelar --}}
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="cancel" onclick="window.location='{{ route('users.index') }}';return false;" class="btn btn-danger">Cancelar</button>  
+                        </div> 
                         </div>
                         {!! Form::close() !!}
                         </div>
