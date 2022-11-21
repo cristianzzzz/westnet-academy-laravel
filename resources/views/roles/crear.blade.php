@@ -32,6 +32,8 @@
                                     {!! Form::text('name', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
+
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="">Permisos para este Rol:</label>
@@ -44,6 +46,7 @@
                                 </div>
                             </div>        
                         </div>
+
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <button type="submit" onclick="window.location='{{ route('roles.index') }}';return false;" class="btn btn-danger">Cancelar</button>
                         {!! Form::close() !!}
@@ -53,4 +56,6 @@
             </div>
         </div>
     </section>
+
+
 @endsection
