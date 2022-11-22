@@ -15,9 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_limit_student_term');
-            $table->integer('course_limit_teacher_weekly');
-            $table->double('teacher_percentage');
+            $table->integer('max_cursos_por_estudiantes');
+            $table->integer('max_cursos_por_semana_profesor');
             $table->timestamps();
         });
     }

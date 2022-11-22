@@ -16,10 +16,14 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->text('contenido');
-            $table->double('precio');
+            $table->text('contenido')->nullable();;
+            $table->double('precio',8,2);
             $table->string('user_id')->nullable();
             $table->integer('enrolled_amount')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('profesor_id');
+            $table->foreign('profesor_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,7 +35,7 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course');
+        Schema::dropIfExists('courses');
     }
 }
 

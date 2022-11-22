@@ -15,9 +15,12 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->double('amount');
-            $table->double('teacher_quota');
+            $table->double('monto',8,2);
+            $table->date('dia_de_pago')->nullable();
+            $table->double('porcentaje_profesor',8,2);
+            $table->date('fecha_pago_a_profesor')->nullable();
             $table->integer('course_id');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }

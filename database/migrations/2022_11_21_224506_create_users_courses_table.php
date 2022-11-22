@@ -15,10 +15,11 @@ class CreateUsersCoursesTable extends Migration
     {
         Schema::create('users_courses', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('estudiante_id');
+            $table->foreign('estudiante_id')->references('id')->on('users');
             $table->integer('course_id');
-            $table->integer('term_id');
-            $table->integer('calification');
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->integer('calificacion')->nullable();
             $table->timestamps();
         });
     }

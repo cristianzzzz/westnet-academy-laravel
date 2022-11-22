@@ -15,7 +15,6 @@ class CoursesSeeder extends Seeder
      */
     public function run()
     {
-        // Admin
         DB::table('courses')->insert([
             'titulo' => 'Curso de Estrategias para Aprender en Línea Efectivamente',
             'contenido' => 'Te enseñará cómo debes aprender de manera efectiva y eficaz para que tu carrera profesional crezca de una manera que no te habías imaginado. Es el curso que creemos todos los estudiantes deben tomar al iniciar con su ruta de aprendizaje.',
