@@ -13,7 +13,6 @@
                             <h3 class="text-center">Usuarios</h3>
 
                             <a class="btn btn-warning" href="{{ route ('users.create') }}">Nuevo</a>
-                            
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
@@ -47,6 +46,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                                 <!-- Centramos la paginacion a la derecha -->
                                 <div class="pagination justify-content-end">
                                     {!! $usuarios->links() !!}
