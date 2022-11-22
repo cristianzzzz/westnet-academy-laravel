@@ -20,9 +20,9 @@ class Courses extends Migration
             $table->double('precio',8,2);
             $table->string('user_id')->nullable();
             $table->integer('enrolled_amount')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->unsignedBigInteger('profesor_id');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->unsignedBigInteger('profesor_id')->nullable();
             $table->foreign('profesor_id')->references('id')->on('users');
             $table->timestamps();
         });
