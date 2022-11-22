@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTable extends Migration
+class Courses extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->integer('enrolled_amount')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('profesor_id');
+            $table->unsignedBigInteger('profesor_id');
             $table->foreign('profesor_id')->references('id')->on('users');
             $table->timestamps();
         });
