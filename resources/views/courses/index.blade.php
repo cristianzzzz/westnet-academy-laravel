@@ -32,14 +32,16 @@
                                 <td>{{ $course->precio }}</td>
                                 <td>
                                     <form action="{{ route('courses.destroy',$course->id) }}" method="POST">    
-
+                                        @role('Administrador|Profesor')
                                         @can('editar-curso')
                                         <a class="btn btn-info" href="{{ route('courses.edit',$course->id) }}">Editar</a>
                                         @endcan
-
+                                        @endrole
+                                        @role('Administrador')
                                         @csrf
                                         @method('DELETE')
                                         @can('borrar-curso')
+                                        @endrole
                                         <button type="submit" class="btn btn-danger">Borrar</button>
                                         @endcan
                                     </form>
