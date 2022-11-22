@@ -2,6 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseUser;
+use App\Models\Payment;
+use App\Models\Settings;
+use App\Models\Subject;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
+
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -25,6 +35,7 @@ class CourseController extends Controller
         $courses = Course::paginate (5);
 
         return view('courses.index', compact('courses'));
+
     }
 
     /**

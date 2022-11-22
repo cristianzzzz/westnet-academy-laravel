@@ -10,7 +10,6 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                
             
                         @can('crear-curso')
                         <a class="btn btn-warning" href="{{ route('courses.create') }}">Nuevo</a>
@@ -19,7 +18,7 @@
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
-                                    <th style="color:#fff;">Titulo</th>
+                                    <th style="color:#fff;">Título</th></th>
                                     <th style="color:#fff;">Contenido</th>
                                     <th style="color:#fff;">Precio $</th>                                   
                                     <th style="color:#fff;">Acciones</th>                                                                   
@@ -28,11 +27,12 @@
                             @foreach ($courses as $course)
                             <tr>
                                 <td style="display: none;">{{ $course->id }}</td>                                
-                                <td>{{ $course->name }}</td>
-                                <td>{{ Str::limit($course->description,50) }}</td>
-                                <td>{{ $course->price }}</td>
+                                <td>{{ $course->titulo }}</td>
+                                <td>{{ Str::limit($course->contenido,50) }}</td>
+                                <td>{{ $course->precio }}</td>
                                 <td>
-                                    <form action="{{ route('courses.destroy',$course->id) }}" method="POST">                                        
+                                    <form action="{{ route('courses.destroy',$course->id) }}" method="POST">    
+
                                         @can('editar-curso')
                                         <a class="btn btn-info" href="{{ route('courses.edit',$course->id) }}">Editar</a>
                                         @endcan
