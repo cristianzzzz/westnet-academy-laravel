@@ -28,9 +28,9 @@
                             @foreach ($courses as $course)
                             <tr>
                                 <td style="display: none;">{{ $course->id }}</td>                                
-                                <td>{{ $course->titulo }}</td>
-                                <td>{{ $course->contenido }}</td>
-                                <td>{{ $course->precio }}</td>
+                                <td>{{ $course->name }}</td>
+                                <td>{{ Str::limit($course->description,50) }}</td>
+                                <td>{{ $course->price }}</td>
                                 <td>
                                     <form action="{{ route('courses.destroy',$course->id) }}" method="POST">                                        
                                         @can('editar-curso')

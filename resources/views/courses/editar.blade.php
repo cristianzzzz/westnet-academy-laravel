@@ -32,21 +32,21 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="titulo">Título</label>
-                                    <input type="text" name="titulo" class="form-control" value="{{ $course->titulo }}">
+                                    <input type="text" name="titulo" class="form-control" value="{{ $course->name }}">
                                 </div>
                             </div>
                             {{-- Contenido --}}
                             <div class="col-xs-12 col-sm-12 col-md-12">             
                                 <div class="form-floating">
                                     <label for="contenido">Contenido</label>
-                                    <textarea class="form-control" name="contenido" style="height: 100px">{{ $course->contenido }}</textarea>
+                                    <textarea class="form-control" name="contenido" style="height: 100px">{{ $course->description }}</textarea>
                                 </div>
                             </div>
                             {{-- Precio --}}
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="precio">Precio</label>
-                                    <input type="text" name="precio" class="form-control" value="{{ $course->precio }}">
+                                    <input type="text" name="precio" class="form-control" value="{{ $course->price }}">
                                 </div>
                             </div>
                             <br>

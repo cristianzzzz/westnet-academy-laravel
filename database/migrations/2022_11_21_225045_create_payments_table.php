@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->double('amount');
             $table->double('teacher_quota');
-            $table->int('course_id');
+            $table->integer('course_id');
             $table->timestamps();
         });
     }
